@@ -12,23 +12,23 @@ I've tried plenty of ways other then a notebook to write content Evernote, Googl
 
   \> pages
 
-  ​	\> About.md
+  ​		\> About.md
 
   \> images
 
-  ​	\> image_1.jpg
+  ​		\> image_1.jpg
 
-  ​	\> image_2.jpg
+  ​		\> image_2.jpg
 
   \> projects
 
-  ​	\> project_1.md
+  ​		\> project_1.md
 
   \> blog
 
-  ​	\> September\_09\_2016.md
+  ​		\> September\_09\_2016.md
 
-  ​	> January\_09\_2017.md
+  ​		> January\_09\_2017.md
 
 - Some static content providor can cosume this and produce a site. 
 
