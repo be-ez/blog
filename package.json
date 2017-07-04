@@ -6,8 +6,10 @@
   "repository": "git@github.com:be-ez/blog.git#gatsby",
   "author": "a@ᗲ.com",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "develop": "gatsby develop",
-    "build": "gatsby build"
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "license": "Copyright Alex Shulman",
   "dependencies": {
