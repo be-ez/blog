@@ -1,0 +1,8 @@
+- Write first blog post
+  - Choosing shoulders to stand on
+    - create-react-app
+    - react-mdc
+  - developing gatsby blog consumer
+- Write json blog schema
+- Finish Gatsby or Material Integration
+- Add first react dev effort as second consumer
