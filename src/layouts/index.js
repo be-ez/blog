@@ -15,23 +15,23 @@ const Layout = ({ children }) => (
       <MainNav />
       <LayoutGrid style={{ background: '#fff' }}>
         <LayoutGrid.Cell
-          span={1}
+          span={2}
         >
         </LayoutGrid.Cell>
         <LayoutGrid.Cell
-          span={10}
+          span={8}
           style={{
             background: '#fff',
             color: 'black',
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'left',
+            alignItems: 'left',
           }}
         >
           {children()}
        </LayoutGrid.Cell>
         <LayoutGrid.Cell
-          span={1}
+          span={2}
         >
         </LayoutGrid.Cell>
       </LayoutGrid>
