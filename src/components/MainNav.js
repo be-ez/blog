@@ -1,0 +1,29 @@
+import React from 'react';
+import Link from "gatsby-link"
+import Toolbar from '@react-mdc/toolbar';
+
+// no longer need routes until ..
+// I generate toolbar or menu sections
+// import routes from '../config/Routes';
+
+const MainNav = () => (
+  <nav>
+    <Toolbar className={'toolbar'}>
+      <Toolbar.Row>
+        <Toolbar.Section align="start">
+          <Link to="/" className={'toolbar-title'}>
+            <Toolbar.Title className={'toolbar-title-text'} >
+              Demo - Replace with Config
+            </Toolbar.Title>
+          </Link>
+        </Toolbar.Section>
+        <Toolbar.Section align="end" className={'toolbar-menu'}>
+          <Link to="/a" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">work</Link>
+          <Link to="/b" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">info_outline</Link>
+        </Toolbar.Section>
+      </Toolbar.Row>
+    </Toolbar>
+  </nav>
+);
+
+export default MainNav;
