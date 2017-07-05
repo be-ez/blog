@@ -38,6 +38,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     draft
                     author
                     parent
+                    summary
                     tags
                   }
                 }

@@ -27,7 +27,7 @@ const Layout = ({ children }) => (
             background: '#fff',
             color: 'black',
             display: 'flex',
-            justifyContent: 'left',
+            justifyContent: 'center',
             alignItems: 'center',
           }}
         >

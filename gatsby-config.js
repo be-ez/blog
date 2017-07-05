@@ -10,6 +10,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,

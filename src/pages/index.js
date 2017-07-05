@@ -1,6 +1,7 @@
 import React from "react";
 
 import LayoutGrid from '@react-mdc/layout-grid';
+import Typography from '@react-mdc/typography';
 
 import BlogCard from "../components/BlogCard";
 import BlogCardList from "../components/BlogCardList"
@@ -8,14 +9,10 @@ import BlogCardList from "../components/BlogCardList"
 class Index extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
-    console.log(posts)
-    //const json_posts = this.props.data.allPostsJson.edges
     return (
       <div>
-        <h1>Moving Targets</h1>
-        <div>
-          <BlogCardList posts={posts} />
-        </div>
+        <Typography.Title>Posts</Typography.Title>
+        <BlogCardList posts={posts} />
       </div>
     )
   }
@@ -46,6 +43,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             path
+            summary
             date(formatString: "MMMM DD, YYYY")
           }
         }
