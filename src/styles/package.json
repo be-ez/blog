@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@react-mdc/button": "^0.1.8",
+    "@react-mdc/elevation": "^0.1.9"
+  }
+}

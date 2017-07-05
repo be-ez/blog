@@ -13,7 +13,7 @@ const MainNav = () => (
         <Toolbar.Section align="start">
           <Link to="/" className={'toolbar-title'}>
             <Toolbar.Title className={'toolbar-title-text'} >
-              Demo - Replace with Config
+              Alex Shulman
             </Toolbar.Title>
           </Link>
         </Toolbar.Section>

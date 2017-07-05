@@ -9,10 +9,10 @@ module.exports = {
         path: path.join(__dirname, `data`),
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`,
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,
+    `gatsby-transformer-sharp`,
   ],
 }

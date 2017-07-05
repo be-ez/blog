@@ -1,27 +1,20 @@
 import React from "react";
-import Link from "gatsby-link";
+
+import LayoutGrid from '@react-mdc/layout-grid';
 
 import BlogCard from "../components/BlogCard";
+import BlogCardList from "../components/BlogCardList"
 
 class Index extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
+    console.log(posts)
     //const json_posts = this.props.data.allPostsJson.edges
-    console.log(this.props.data)
     return (
       <div>
-        <h1 >Hi sassy friends</h1>
+        <h1>Moving Targets</h1>
         <div>
-        {posts.map(post =>
-          <BlogCard key={post.node.frontmatter.path}>
-                <span>
-                  {post.node.frontmatter.smallImage}
-                </span>
-                <Link to={post.node.frontmatter.path}>
-                  {post.node.frontmatter.title}
-                </Link>
-          </BlogCard>
-        )}
+          <BlogCardList posts={posts} />
         </div>
       </div>
     )

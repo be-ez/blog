@@ -13,25 +13,28 @@ const Layout = ({ children }) => (
   <Theme>
     <Typography>
       <MainNav />
-      <LayoutGrid style={{ background: '#fff' }}>
+      <LayoutGrid
+        style={{
+            paddingTop: "30px",
+            background: '#fff' }}>
         <LayoutGrid.Cell
-          span={2}
+          span={1}
         >
         </LayoutGrid.Cell>
         <LayoutGrid.Cell
-          span={8}
+          span={10}
           style={{
             background: '#fff',
             color: 'black',
             display: 'flex',
             justifyContent: 'left',
-            alignItems: 'left',
+            alignItems: 'center',
           }}
         >
           {children()}
        </LayoutGrid.Cell>
         <LayoutGrid.Cell
-          span={2}
+          span={1}
         >
         </LayoutGrid.Cell>
       </LayoutGrid>
