@@ -18,8 +18,8 @@ const MainNav = () => (
           </Link>
         </Toolbar.Section>
         <Toolbar.Section align="end" className={'toolbar-menu'}>
-          <Link to="/a" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">work</Link>
-          <Link to="/b" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">info_outline</Link>
+          <Link to="/projects" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">work</Link>
+          <Link to="/about" className={'material-icons mdc-toolbar__icon toolbar-icon'} aria-label="info" alt="info">info_outline</Link>
         </Toolbar.Section>
       </Toolbar.Row>
     </Toolbar>
