@@ -22,9 +22,9 @@ class RootIndex extends React.Component {
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
-                  <li key={node.slug}>
+                  <ul key={node.slug}>
                     <ArticlePreview article={node} />
-                  </li>
+                  </ul>
                 )
               })}
             </ul>
