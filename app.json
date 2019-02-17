@@ -1,0 +1,21 @@
+{
+  "name": "Alex",
+  "description": "Gastby Contentful MDX + Thoughts",
+  "keywords": [
+    "contentful",
+    "gatsby",
+    "mdx",
+    "static",
+    "ssg"
+  ],
+  "repository": "https://github.com/be-ez/blog",
+  "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-static"
+    }
+  ]
+}

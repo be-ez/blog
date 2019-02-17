@@ -1,39 +1,34 @@
-# Personal Notebook
+# Gatsby Contentful
 
+## Goals
 
+    [ ❌ ] Simple workspace to track projects 👌
 
-I've tried plenty of ways other then a notebook to write content Evernote, Google Keep / macOS Stickies, One Note and somethings from each have stuck.  I think generating words is probably healthy for the mind and theres some level of quality difference that happens when you write for general consumption. This is basically the ethos of this repo.
+    [ ❌ ] Integration with Dokku / Heroku and/or netlify/ghpages 💸
 
+    [ ❌ ] Support MDX and/or Vue ⚡️
 
+    [ ❌ ] Analtyics page🔆
 
-#### How it will work
+    [ ❌ ] Words per week 💯
 
-- Markdown pages in folders here will map to posts, projects and pages
+    [ ❌ ] Graphs via project analytics 📈
 
-  \> pages
+## Dev
 
-  ​	\> About.md
+### Dependencies
+ `yarn` 
 
-  \> images
+### Dev Server
+`yarn develop`
 
-  ​	\> image_1.jpg
+## Deployment
 
-  ​	\> image_2.jpg
+### Dokku
+Must be configured with dokku
+`git remote add dokku xn--4qe.com:contentful`
+Deploy with git
+`git push dokku master`
 
-  \> projects
-
-  ​	\> project_1.md
-
-  \> blog
-
-  ​	\> September\_09\_2016.md
-
-  ​	> January\_09\_2017.md
-
-- Some static content providor can cosume this and produce a site. 
-
-- Github can serve the md content. 
-
-- Hosting can be done through github pages
-
-- CDN to come via integration
+### Local Build
+`yarn build`
