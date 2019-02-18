@@ -1,16 +1,27 @@
 # Gatsby Contentful
 
 ## Goals
+    [ ✅ ] Contentful CMS
+        [✔️] Blog Posts
+        [❌] Page Layout
+        [❌] Nav
+        [❌] MDX Components?
 
-    [ ❌ ] Simple workspace to track projects 👌
+    [ ✅ ] Continuous Deployment
+        [✔️] Dokku push
+        [✔️] Contentful Change
+        [✔️] Contentful Dev Site
 
-    [ ❌ ] Integration with Dokku / Heroku and/or netlify/ghpages 💸
+    [ 📈 ] Simple workspace to track projects 👌
+
+    [ 📈 ] Integration with Dokku / Heroku and/or netlify/ghpages 💸
 
     [ ❌ ] Support MDX and/or Vue ⚡️
 
     [ ❌ ] Analtyics page🔆
-
-    [ ❌ ] Words per week 💯
+            [❌] Words per week 💯
+            [❌] SVG Graph plugin
+            [❌] Wakatime stats
 
     [ ❌ ] Graphs via project analytics 📈
 
