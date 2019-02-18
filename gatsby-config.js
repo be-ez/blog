@@ -5,12 +5,19 @@ try {
   contentfulConfig = require('./.contentful')
 } catch (_) {}
 
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
 
+if ( process.env.CONTENTFUL_DEV ) {
+  contentfulConfig = {
+    spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+    accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN || contentfulConfig.accessToken,
+    host: "preview.contentful.com"
+  }
+} else {
+  contentfulConfig = {
+    spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+    accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+  }
+}
 const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {
@@ -55,7 +62,7 @@ module.exports = {
     },
     {
       resolve: 'gatsby-source-contentful',
-      options: contentfulConfig,
+      options: contentfulConfig
     }
   ],
 }
