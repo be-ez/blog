@@ -28,14 +28,29 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Contentful starter',
+    title: 'd(^_^)b',
   },
-  pathPrefix: '/gatsby-contentful-starter',
+  pathPrefix: '/',
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `d(^_^)b`,
+        short_name: `ᗲ`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#a2466c`,
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: `standalone`,
+        icon: `src/images/icon-152x152.png`, // This path is relative to the root of the site.
+        include_favicon: true, // Include favicon
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
