@@ -25,7 +25,9 @@ class ViewTemplate extends React.Component {
               fluid={view.heroImage.fluid}
             />
           </div>
-          <ViewContent title={view.title} content={view.content} />
+          <div className="wrapper">
+            <ViewContent title={view.title} content={view.content} />
+          </div>
         </Layout>
       )
   }

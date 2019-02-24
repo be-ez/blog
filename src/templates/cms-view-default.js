@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
-import ContentfulContent from '../components/contentful/GenericContent'
+import ViewContent from '../components/contentful/View'
 import heroStyles from '../components/hero.module.css'
 
 
@@ -18,7 +18,7 @@ class ViewDefaultTemplate extends React.Component {
       return (
         <Layout location={this.props.location}>
          <Helmet title={siteTitle} />
-         <ContentfulContent key={content.slug}  content={content} />
+         <ViewContent key={content.slug}  content={content} />
         </Layout>
       )
   }
@@ -35,6 +35,7 @@ export const pageQuery = graphql`
     }
     contentfulGenericContent(slug: {eq: $slug}) {
       ... GenericContentFragment
+      __typename
 
     }
   }

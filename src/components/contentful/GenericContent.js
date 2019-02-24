@@ -3,10 +3,21 @@ import { graphql } from "gatsby"
 
 function ContentfulContent(props) {
   const content = props.content
+  if (content.body){
+    return (
+      <div>
+        <h1>{content.title}</h1>
+        <div
+                dangerouslySetInnerHTML={{
+                  __html: content.body.childContentfulRichText.html,
+                }}
+              />
+      </div>
+    )
+  }
   return (
     <div>
       <h1>{content.title}</h1>
-      {/* {{content}} */}
     </div>
   )
 }
@@ -17,10 +28,8 @@ export const genericContentFragment = graphql`
     title
     slug
     body {
-      content {
-        content {
-          value
-        }
+      childContentfulRichText {
+          html
       }
     }
   }
