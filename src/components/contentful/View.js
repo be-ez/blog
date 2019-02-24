@@ -26,8 +26,13 @@ function ViewContent({ title, content }) {
       </ul>
     </div>
     )
+  }else if (content.__typename == "ContentfulGenericContent"){
+    return (
+      <ContentfulContent key={content.slug}  content={content} />
+      )
   }
-  return (<p>tst</p>)
+  console.log(content.__typename)
+  return (<p>Something Broke in Rendering the Content Type via ViewContent</p>)
 }
 
 export default ViewContent
