@@ -9,6 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
     const cmsView = path.resolve('./src/templates/cms-view.js')
     const tagTemplate = path.resolve('./src/templates/tags.js')
+    const cmsViewDefault = path.resolve('./src/templates/cms-view-default.js')
 
     resolve(
       graphql(
@@ -32,12 +33,15 @@ exports.createPages = ({ graphql, actions }) => {
                   content{
                     ... on ContentfulCard {
                       slug
+                      __typename
                     }
                     ... on ContentfulGenericContent{
                       slug
+                      __typename
                     }
                     ... on ContentfulBlogPost {
                       slug
+                      __typename
                     }
                   }
                 }
@@ -56,14 +60,33 @@ exports.createPages = ({ graphql, actions }) => {
         views.forEach((view, index) => {
           if (view.node.subpages){
             view.node.content.forEach((content, index) => {
-              console.log(view.node.slug + "/" + content.slug)
-              createPage({
-                path: `/${view.node.slug}/${content.slug}/`,
-                component: blogPost,
-                context: {
-                  slug: content.slug
-                },
-              })
+              // console.log(view.node.slug + "/" + content.slug)
+              if (content.__typename == 'ContentfulBlogPost'){
+                createPage({
+                  path: `/${view.node.slug}/${content.slug}/`,
+                  component: blogPost,
+                  context: {
+                    slug: content.slug
+                  },
+                })
+              } else if (content.__typename == 'ContentfulView'){
+                createPage({
+                  path: `/${view.node.slug}/${content.slug}/`,
+                  component: cmsView,
+                  context: {
+                    slug: content.slug
+                  },
+                })
+              } else if (content.__typename == 'ContentfulGenericContent'){
+                createPage({
+                  path: `/${view.node.slug}/${content.slug}/`,
+                  component: cmsViewDefault,
+                  context: {
+                    slug: content.slug
+                  },
+                })
+              }
+
             })
           }
           // Create root of multi page, this ideally needs

@@ -32,6 +32,10 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig
+    },
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
@@ -75,10 +79,6 @@ module.exports = {
         siteSpeedSampleRate: 10,
         cookieDomain: "xn--4qe.com",
       },
-    },
-    {
-      resolve: 'gatsby-source-contentful',
-      options: contentfulConfig
     }
   ],
 }

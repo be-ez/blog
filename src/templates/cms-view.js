@@ -4,36 +4,8 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
-import ContentfulContent from '../components/contentful/GenericContent'
-import ArticlePreview from '../components/article-preview'
-
+import ViewContent from '../components/contentful/View'
 import heroStyles from '../components/hero.module.css'
-
-function ViewContent({ title, content }) {
-  if (Array.isArray(content)){
-    return (
-      <div className="wrapper">
-      <h2 className="section-headline">{title}</h2>
-      <ul className="article-list">
-        {content.map((node ) => {
-          if (node.__typename == "ContentfulBlogPost"){
-            return (
-              <li key={node.slug}>
-                <ArticlePreview article={node} />
-              </li>
-            )
-          } else if( node.__typename == "ContentfulGenericContent" ){
-            return (
-              <ContentfulContent key={node.slug}  content={node} />
-            )
-          }
-        })}
-      </ul>
-    </div>
-    )
-  }
-  return (<p>tst</p>)
-}
 
 class ViewTemplate extends React.Component {
   render() {
