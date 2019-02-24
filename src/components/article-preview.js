@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 import styles from './article-preview.module.css'
 
@@ -17,8 +17,7 @@ export default ({ article }) => (
       }}
     />
     {article.tags.map(tag => (
-
-      <Link to={"/tags/"+tag} className={styles.tag} key={tag}>
+      <Link to={'/tags/' + tag} className={styles.tag} key={tag}>
         {tag}
       </Link>
     ))}

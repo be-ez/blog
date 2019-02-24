@@ -1,13 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import LayoutGrid from '@react-mdc/layout-grid';
-import Typography from '@react-mdc/typography';
-import Theme from '@react-mdc/theme';
+import LayoutGrid from '@react-mdc/layout-grid'
+import Typography from '@react-mdc/typography'
+import Theme from '@react-mdc/theme'
 
-import MainNav from '../components/MainNav';
+import MainNav from '../components/MainNav'
 
-import "../styles/main.scss"
+import '../styles/main.scss'
 
 const Layout = ({ children }) => (
   <Theme>
@@ -15,12 +15,11 @@ const Layout = ({ children }) => (
       <MainNav />
       <LayoutGrid
         style={{
-            paddingTop: "30px",
-            background: '#fff' }}>
-        <LayoutGrid.Cell
-          span={1}
-        >
-        </LayoutGrid.Cell>
+          paddingTop: '30px',
+          background: '#fff',
+        }}
+      >
+        <LayoutGrid.Cell span={1} />
         <LayoutGrid.Cell
           span={10}
           style={{
@@ -32,15 +31,12 @@ const Layout = ({ children }) => (
           }}
         >
           {children()}
-       </LayoutGrid.Cell>
-        <LayoutGrid.Cell
-          span={1}
-        >
         </LayoutGrid.Cell>
+        <LayoutGrid.Cell span={1} />
       </LayoutGrid>
     </Typography>
   </Theme>
-);
+)
 
 Layout.propTypes = {
   children: PropTypes.any,

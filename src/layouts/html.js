@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import * as PropTypes from "prop-types"
-import Typography from "typography"
-import { TypographyStyle } from "react-typography"
+import React, { Component } from 'react'
+import * as PropTypes from 'prop-types'
+import Typography from 'typography'
+import { TypographyStyle } from 'react-typography'
 
 const typography = new Typography()
 

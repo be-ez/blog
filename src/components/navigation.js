@@ -12,8 +12,8 @@ export default () => (
         <Link to="/blog/">Blog</Link>
       </li>
       <li className={styles.navigationItem}>
-      <Link to="/tags/">Tags</Link>
-    </li>
+        <Link to="/tags/">Tags</Link>
+      </li>
     </ul>
   </nav>
 )
