@@ -17,8 +17,10 @@ class Tags extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const group = get(this, 'props.data.allContentfulBlogPost.group')
+    const views = get(this, 'props.data.allContentfulView.edges')
+    console.log(views)
     return (
-      <Layout location={this.props.location}>
+      <Layout views={views} location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <div className={styles.hero}>Tags</div>
@@ -47,6 +49,15 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allContentfulView(limit: 10) {
+      edges {
+        node {
+          title
+          slug
+          appearInNav
+        }
       }
     }
     allContentfulBlogPost(limit: 2000) {

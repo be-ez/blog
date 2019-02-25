@@ -60,7 +60,6 @@ exports.createPages = ({ graphql, actions }) => {
         views.forEach((view, index) => {
           if (view.node.subpages){
             view.node.content.forEach((content, index) => {
-              // console.log(view.node.slug + "/" + content.slug)
               if (content.__typename == 'ContentfulBlogPost'){
                 createPage({
                   path: `/${view.node.slug}/${content.slug}/`,

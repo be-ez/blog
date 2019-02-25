@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 
 function ContentfulCard(props) {
   const title = props.data.title
-  console.log(props.data)
   return (
     <div>
       <h1>{title}</h1>

@@ -12,13 +12,14 @@ class ViewDefaultTemplate extends React.Component {
   render() {
     const content = get(this.props, 'data.contentfulGenericContent')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    console.log(content)
-    // const subpages = get(this.props, 'data.contentfulView.subpages')
+    const views = get(this.props, 'data.allContentfulView.edges')
     // Render list nested view
       return (
-        <Layout location={this.props.location}>
+        <Layout views={views} location={this.props.location}>
          <Helmet title={siteTitle} />
-         <ViewContent key={content.slug}  content={content} />
+         <div className="wrapper">
+           <ViewContent key={content.slug}  content={content} />
+         </div>
         </Layout>
       )
   }
@@ -37,6 +38,15 @@ export const pageQuery = graphql`
       ... GenericContentFragment
       __typename
 
+    }
+    allContentfulView(limit: 10) {
+      edges {
+        node {
+          title
+          slug
+          appearInNav
+        }
+      }
     }
   }
 `
