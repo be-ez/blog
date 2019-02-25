@@ -7,11 +7,13 @@ try {
 
 
 if ( process.env.CONTENTFUL_DEV ) {
+  console.log(process.env.CONTENTFUL_DEV)
   contentfulConfig = {
     spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
     accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN || contentfulConfig.accessToken,
     host: "preview.contentful.com"
   }
+  console.log("CONTENTFUL DEV")
 } else {
   contentfulConfig = {
     spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,

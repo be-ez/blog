@@ -65,7 +65,8 @@ exports.createPages = ({ graphql, actions }) => {
                   path: `/${view.node.slug}/${content.slug}/`,
                   component: blogPost,
                   context: {
-                    slug: content.slug
+                    slug: content.slug,
+                    parent_slug: view.node.slug
                   },
                 })
               } else if (content.__typename == 'ContentfulView'){
@@ -73,7 +74,8 @@ exports.createPages = ({ graphql, actions }) => {
                   path: `/${view.node.slug}/${content.slug}/`,
                   component: cmsView,
                   context: {
-                    slug: content.slug
+                    slug: content.slug,
+                    parent_slug: view.node.slug
                   },
                 })
               } else if (content.__typename == 'ContentfulGenericContent'){
@@ -81,7 +83,8 @@ exports.createPages = ({ graphql, actions }) => {
                   path: `/${view.node.slug}/${content.slug}/`,
                   component: cmsViewDefault,
                   context: {
-                    slug: content.slug
+                    slug: content.slug,
+                    parent_slug: view.node.slug
                   },
                 })
               }
