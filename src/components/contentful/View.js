@@ -2,12 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import ContentfulContent from './GenericContent'
+import ContentfulCard from './Card'
 import ArticlePreview from '../article-preview'
 
 function ViewContent({ title, content, slug }) {
   if (Array.isArray(content)){
     return (
-      <div className="wrapper">
+      <div>
       <h2 className="section-headline">{title}</h2>
       <ul className="article-list">
         {content.map((node ) => {
@@ -22,10 +23,14 @@ function ViewContent({ title, content, slug }) {
             return (
               <ContentfulContent slug={slug} key={node.slug} content={node} />
             )
+          } else if (node.__typename == "ContentfulCard"){
+            return (
+            <ContentfulCard key={node.slug} content={node} />
+            )
           }
         })}
       </ul>
-    </div>
+      </div>
     )
   }else if (content.__typename == "ContentfulGenericContent"){
 
@@ -53,14 +58,7 @@ export const viewFragment = graphql`
             ... GenericContentFragment
           }
           ... on ContentfulBlogPost {
-            slug
-            title
-            description {
-              description
-            }
-            body {
-              body
-            }
+            ... BlogArticlePreviewFragment
           }
         }
         header {

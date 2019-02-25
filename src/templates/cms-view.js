@@ -17,17 +17,19 @@ class ViewTemplate extends React.Component {
     // Render list nested view
       return (
          <Layout views={views} location={this.props.location} >
-         <Helmet title={siteTitle} />
-         <div className={heroStyles.hero}>
-            {/* TODO: Implement Header */}
-            <Img
-              className={heroStyles.heroImage}
-              alt={view.title}
-              fluid={view.heroImage.fluid}
-            />
-          </div>
-          <div className="wrapper">
-            <ViewContent slug={view.slug} title={view.title} content={view.content} />
+          <div style={{ background: '#fff' }}>
+            <Helmet title={siteTitle +"-"+ view.slug} />
+            <div className={heroStyles.hero}>
+              {/* TODO: Implement Header */}
+              <Img
+                className={heroStyles.heroImage}
+                alt={view.title}
+                fluid={view.heroImage.fluid}
+              />
+            </div>
+            <div className="wrapper">
+              <ViewContent slug={view.slug} title={view.title} content={view.content} />
+            </div>
           </div>
         </Layout>
       )
@@ -75,7 +77,7 @@ export const pageQuery = graphql`
           tags
           publishDate(formatString: "MMMM Do, YYYY")
           heroImage {
-            fluid(maxWidth: 1180, background: "rgb:000000") {
+            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }

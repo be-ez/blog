@@ -55,9 +55,20 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
-
+         // Tag pages:
+        let tags = []
         const views = result.data.allContentfulView.edges
         views.forEach((view, index) => {
+          view.node.content.forEach((content) => {
+            content
+          })
+          // Iterate through each content, putting all found tags into `tags`
+          _.each(view.node.content, edge => {
+            if (_.get(edge, "tags")) {
+              tags = tags.concat(edge.tags)
+            }
+          })
+
           if (view.node.subpages){
             view.node.content.forEach((content, index) => {
               if (content.__typename == 'ContentfulBlogPost'){
@@ -112,8 +123,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
         })
-         // Tag pages:
-        let tags = []
+
         // Iterate through each post, putting all found tags into `tags`
         _.each(posts, edge => {
           if (_.get(edge, "node.tags")) {

@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
+import ContentfulContent from './GenericContent'
 
-function ContentfulCard(props) {
-  const content = props.data.content
-  const slug = props.data.slug
+export default function ContentfulCard({content, slug}) {
+  console.log(content)
+  const inner_content =content.content
   return (
     <div>
-      <h1>{post.frontmatter.title}</h1>
+      <ContentfulContent slug={slug} content={inner_content} />
     </div>
   )
 }

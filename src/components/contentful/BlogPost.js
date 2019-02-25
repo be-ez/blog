@@ -26,3 +26,21 @@ export const blogPostFragment = graphql`
     }
   }
 `
+export const blogArticlePreviewFragment = graphql`
+  fragment BlogArticlePreviewFragment on ContentfulBlogPost {
+    title
+    slug
+    publishDate(formatString: "MMMM Do, YYYY")
+    tags
+    heroImage {
+      fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+        ...GatsbyContentfulFluid_tracedSVG
+      }
+    }
+    description {
+      childMarkdownRemark {
+        html
+      }
+    }
+  }
+`
