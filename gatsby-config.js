@@ -32,7 +32,6 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
-    'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
@@ -76,9 +75,13 @@ module.exports = {
         cookieDomain: "xn--4qe.com",
       },
     },
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig
+    },
+    {
+      resolve: '@contentful/gatsby-transformer-contentful-richtext'
     }
   ],
 }
