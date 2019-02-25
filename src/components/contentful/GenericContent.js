@@ -1,12 +1,29 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import styles from '../article-preview.module.css'
 
-function ContentfulContent(props) {
-  const content = props.content
+function LinkIfParentSlug({parent_slug, slug, title}){
+  if (parent_slug){
+    return (
+      <h3 className={styles.previewTitle}>
+        <Link to={`/${parent_slug}/${slug}`}>{title}</Link>
+      </h3>
+    )
+  }
+  return (
+    <h1>{title}</h1>
+  )
+}
+
+function ContentfulContent({content, slug}) {
   if (content.body){
     return (
       <div>
-        <h1>{content.title}</h1>
+        <LinkIfParentSlug
+          parent_slug={slug}
+          slug={content.slug}
+          title={content.title}
+        />
         <div
                 dangerouslySetInnerHTML={{
                   __html: content.body.childContentfulRichText.html,

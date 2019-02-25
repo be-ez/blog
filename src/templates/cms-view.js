@@ -11,12 +11,12 @@ class ViewTemplate extends React.Component {
   render() {
     const view = get(this.props, 'data.contentfulView')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const content = get(this.props, 'data.contentfulView.content')
+    // const content = get(this.props, 'data.contentfulView.content')
     const views = get(this.props, 'data.allContentfulView.edges')
     // const subpages = get(this.props, 'data.contentfulView.subpages')
     // Render list nested view
       return (
-        <Layout views={views} location={this.props.location} >
+         <Layout views={views} location={this.props.location} >
          <Helmet title={siteTitle} />
          <div className={heroStyles.hero}>
             {/* TODO: Implement Header */}
@@ -27,7 +27,7 @@ class ViewTemplate extends React.Component {
             />
           </div>
           <div className="wrapper">
-            <ViewContent title={view.title} content={view.content} />
+            <ViewContent slug={view.slug} title={view.title} content={view.content} />
           </div>
         </Layout>
       )
@@ -54,6 +54,7 @@ export const pageQuery = graphql`
     }
     contentfulView(slug: {eq: $slug}) {
       title
+      slug
       subpages
       heroImage {
             fluid(maxWidth: 1180, background: "rgb:000000") {

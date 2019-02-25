@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import ContentfulContent from './GenericContent'
 import ArticlePreview from '../article-preview'
 
-function ViewContent({ title, content }) {
+function ViewContent({ title, content, slug }) {
   if (Array.isArray(content)){
     return (
       <div className="wrapper">
@@ -19,7 +19,7 @@ function ViewContent({ title, content }) {
             )
           } else if( node.__typename == "ContentfulGenericContent" ){
             return (
-              <ContentfulContent key={node.slug}  content={node} />
+              <ContentfulContent slug={slug} key={node.slug} content={node} />
             )
           }
         })}
@@ -40,6 +40,8 @@ export default ViewContent
 export const viewFragment = graphql`
   fragment ViewFragment on ContentfulView {
         title
+        slug
+        subpages
         content {
           __typename
           ... on ContentfulCard {

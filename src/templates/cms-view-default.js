@@ -18,7 +18,7 @@ class ViewDefaultTemplate extends React.Component {
         <Layout views={views} location={this.props.location}>
          <Helmet title={siteTitle} />
          <div className="wrapper">
-           <ViewContent key={content.slug}  content={content} />
+           <ViewContent  key={content.slug}  content={content} />
          </div>
         </Layout>
       )
