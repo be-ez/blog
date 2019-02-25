@@ -18,7 +18,6 @@ class Tags extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const group = get(this, 'props.data.allContentfulBlogPost.group')
     const views = get(this, 'props.data.allContentfulView.edges')
-    console.log(views)
     return (
       <Layout views={views} location={this.props.location}>
         <div style={{ background: '#fff' }}>

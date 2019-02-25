@@ -28,11 +28,11 @@ class nav extends React.Component {
       <nav role="navigation">
       <ul className={styles.navigation}>
         <li className={styles.navigationItem}>
-          <Link to="/">Home</Link>
+          <Link to="/">🏚</Link>
         </li>
         <NavIfProps views={views} />
         <li className={styles.navigationItem}>
-          <Link to="/tags/">Tags</Link>
+          <Link to="/tags/">🏷</Link>
         </li>
       </ul>
     </nav>
