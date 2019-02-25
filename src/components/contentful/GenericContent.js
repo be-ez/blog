@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import RichText from "./RichText"
 import styles from '../article-preview.module.css'
 
 function LinkIfParentSlug({parent_slug, slug, title}){
@@ -24,6 +25,7 @@ function ContentfulContent({content, slug}) {
           slug={content.slug}
           title={content.title}
         />
+        {/* <RichText document={content.body.content[0]} /> */}
         <div
                 dangerouslySetInnerHTML={{
                   __html: content.body.childContentfulRichText.html,
@@ -34,7 +36,11 @@ function ContentfulContent({content, slug}) {
   }
   return (
     <div>
-      <h1>{content.title}</h1>
+      <LinkIfParentSlug
+          parent_slug={slug}
+          slug={content.slug}
+          title={content.title}
+        />
     </div>
   )
 }
@@ -45,8 +51,30 @@ export const genericContentFragment = graphql`
     title
     slug
     body {
-      childContentfulRichText {
-          html
+      id
+      nodeType
+      childContentfulRichText{
+        html
+      }
+      content {
+        nodeType
+        content {
+          nodeType
+          value
+        }
+        data{
+          target{
+            fields{
+              file{
+                en_US {
+                  url
+                  fileName
+                  contentType
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

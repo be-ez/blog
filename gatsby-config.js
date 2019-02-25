@@ -7,7 +7,6 @@ try {
 
 
 if ( process.env.CONTENTFUL_DEV ) {
-  console.log(process.env.CONTENTFUL_DEV)
   contentfulConfig = {
     spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
     accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN || contentfulConfig.accessToken,
@@ -27,7 +26,7 @@ if (!spaceId || !accessToken) {
     'Contentful spaceId and the delivery token need to be provided.'
   )
 }
-
+const { BLOCKS } = require('@contentful/rich-text-types')
 module.exports = {
   siteMetadata: {
     title: 'd(^_^)b',
@@ -83,7 +82,16 @@ module.exports = {
       options: contentfulConfig
     },
     {
-      resolve: '@contentful/gatsby-transformer-contentful-richtext'
+      resolve: `@contentful/gatsby-transformer-contentful-richtext`,
+      options: {
+        renderOptions: {
+          renderNode: {
+            [BLOCKS.EMBEDDED_ASSET]: node => {
+              return `<img src="${node.data.target.fields.file['en-US'].url}" />`
+            }
+          },
+        },
+      },
     }
   ],
 }

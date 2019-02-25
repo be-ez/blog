@@ -18,6 +18,7 @@ function ViewContent({ title, content, slug }) {
               </li>
             )
           } else if( node.__typename == "ContentfulGenericContent" ){
+            // console.log(node.slug)
             return (
               <ContentfulContent slug={slug} key={node.slug} content={node} />
             )
@@ -27,8 +28,9 @@ function ViewContent({ title, content, slug }) {
     </div>
     )
   }else if (content.__typename == "ContentfulGenericContent"){
+
     return (
-      <ContentfulContent key={content.slug}  content={content} />
+      <ContentfulContent slug={slug} key={content.slug}  content={content} />
       )
   }
   console.log(content.__typename)
