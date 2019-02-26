@@ -42,6 +42,8 @@ module.exports = {
       options: {
         name: `d(^_^)b`,
         short_name: `ᗲ`,
+        "apple-mobile-web-app-capable": "yes",
+        "apple-mobile-web-app-status-bar-style": "black-translucent",
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#a2466c`,
