@@ -13,22 +13,24 @@ export default function ContentfulCard({content, slug}) {
   const inner_content =content.content
   return (
     <div>
-      <Box width={1/3}>
+      <Box m='auto' width={[
+        1,
+      ]}>
       <Card
 
         boxShadow='0 0 16px rgba(0, 0, 0, .25)'>
         <Img
             alt={content.slug}
             fluid={content.image.fluid} />
-        <Box p={1} px={2}>
+        <Box px={1}>
           <Heading as='h1'>
             {inner_content.title}
           </Heading>
           <Text
           dangerouslySetInnerHTML={{
-            __html: inner_content.body.childContentfulRichText.html,
+            __html: content.description.childMarkdownRemark.html,
           }}
-          fontSize={3}>
+          fontSize={1}>
           </Text>
         </Box>
       </Card>
@@ -40,6 +42,12 @@ export default function ContentfulCard({content, slug}) {
 export const cardFragment = graphql`
   fragment ContentfulCardFragment on ContentfulCard {
     slug
+    description {
+      childMarkdownRemark {
+        id
+        html
+      }
+    }
     image {
       fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
         ...GatsbyContentfulFluid_tracedSVG

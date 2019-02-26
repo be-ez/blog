@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import {
+  Box } from 'rebass'
 
 class RootIndex extends React.Component {
   render() {
@@ -22,9 +24,9 @@ class RootIndex extends React.Component {
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
-                  <ul key={node.slug}>
+                  <Box key={node.slug} width={1}>
                     <ArticlePreview article={node} />
-                  </ul>
+                  </Box>
                 )
               })}
             </ul>
