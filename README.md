@@ -1,29 +1,57 @@
 # Gatsby Contentful
 
 ## Goals
+    [ 📈 ] Simple CMS workspace to create content 👌
+    [ 📈 ] Push to deploy & deploy on CMS update  💸
+    [ 📈 ] Re-usable web component library
+    
+### Roadmap
+#### __[ 4/1/18 ] Base Contentful React Components__
+Control UI with CMS
+
+#### __[ 4/1/18 ] Open Source__
+All secrets are remove and be-ez/blog is made public
+
+#### __[ 5/1/18 ]  MDX__
+Possible to write posts in MDX with either React of Vue
+        
+### Features
     [ ✅ ] Contentful CMS
-        [✔️] Fluid Images
-        [✔️] Blog Posts
-        [❌] Page Layout
-        [✔️] Card
-        [✔️] Generic Content
-        [✔️] Views
-        [✔️] Subviews
-        [✔️] Nav
-        [✔️] Rich Text
-        [❌] Fluid Images in Rich Text
-        [❌] MDX Components
+        [ ✅ ] Fluid Images
+        [ ✅ ] Blog Posts
+        [ ✅ ] Card
+        [ ✅ ] Generic Content
+        [ ✅ ] Views
+        [ ✅ ] Subviews
+        [ ✅ ] Nav
+        [ ❌ ] iOS Live Photos
+        [ ✅ ] Rich Text
+            [ ✅ ] Images
+            [ ✅ ] Formatting (Bold, Header Pagebreak etc.) 
+            [ ❌ ] Video
+            [ ❌ ] Fluid Images in Rich Text
+        [ ✅ ] Sub-View Templates
+            [ ✅ ] Generic
+            [ ✅ ] Blog
+            [ ❌ ] Card
+        [ ❌ ] Mobile
+            [ ❌ ] Breakpoints
+            [ ❌ ] Flexbox Grid in base layout
+        [ ❌ ] Customize Layouts
+            [ ❌ ] Card
+            [ ❌ ] View
+            [ ❌ ] PhotoGallery
     [ ✅ ] Continuous Deployment
-        [✔️] Dokku push
-        [✔️] Contentful Change
-        [✔️] Contentful Dev Site
-    [ 📈 ] Simple workspace to track projects 👌
-    [ 📈 ] Integration with Dokku / Heroku and/or netlify/ghpages 💸
+        [ ✅ ] Dokku push
+        [ ✅ ] Contentful Change
+        [ ✅ ] Contentful Dev Site
+        [ ❌ ] gh-pages
+        [ ❌ ] gitlab pipelines
     [ ❌ ] Support MDX and/or Vue ⚡️
     [ ❌ ] Analtyics page🔆
-            [❌] Words per week 💯
-            [❌] SVG Graph plugin
-            [❌] Wakatime stats
+        [❌] Words per week 💯
+        [❌] SVG Graph plugin
+        [❌] Wakatime stats
     [ ❌ ] Graphs via project analytics 📈
 
 ## Dev
