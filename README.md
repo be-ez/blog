@@ -10,7 +10,7 @@
 Control UI with CMS
 
 #### __[ 4/1/18 ] Open Source__
-All secrets are remove and be-ez/blog is made public
+All secrets are removed and be-ez/blog is made public
 
 #### __[ 5/1/18 ]  MDX__
 Possible to write posts in MDX with either React of Vue
