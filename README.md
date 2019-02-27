@@ -6,11 +6,15 @@
     [ 📈 ] Re-usable web component library
     
 ### Roadmap
+
 #### __[ 4/1/18 ] Base Contentful React Components__
 Control UI with CMS
 
 #### __[ 4/1/18 ] Open Source__
 All secrets are removed and be-ez/blog is made public
+
+#### __[ 4/15/18 ] Live Photo__
+Single/Grid view Live Photo
 
 #### __[ 5/1/18 ]  MDX__
 Possible to write posts in MDX with either React of Vue
