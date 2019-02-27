@@ -8,6 +8,14 @@ import Layout from '../components/layout'
 import heroStyles from '../components/hero.module.css'
 
 class BlogPostTemplate extends React.Component {
+  componentDidMount () {
+    const script = document.createElement("script");
+
+    script.src = "https://c.xn--4qe.com/js/commento.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+}
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
@@ -40,6 +48,7 @@ class BlogPostTemplate extends React.Component {
             />
           </div>
         </div>
+      <div id="commento"></div>
       </Layout>
     )
   }
