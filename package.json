@@ -20,7 +20,6 @@
     "gatsby-transformer-sharp": "^2.1.13",
     "lodash": "^4.17.11",
     "react": "^16.8.2",
-    "react-chartist": "^0.13.3",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "rebass": "^3.0.1",
