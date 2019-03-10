@@ -1,10 +1,13 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
+  "name": "gatsby-blog-contentful-views",
+  "engines":{
+    "node":"8.15.0"
+  },
+  "description": "Blog",
   "version": "1.0.0",
-  "author": "Stefan Judis <stefanjudis@gmail.com>",
+  "author": "A",
   "bugs": {
-    "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
+    "url": "https://github.com/be-ez/blog/issues"
   },
   "dependencies": {
     "@contentful/gatsby-transformer-contentful-richtext": "^13.0.1",
