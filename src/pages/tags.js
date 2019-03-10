@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 // Utilities
 import kebabCase from 'lodash/kebabCase'
@@ -11,7 +10,7 @@ import { Link, graphql } from 'gatsby'
 
 // Layout
 import styles from './blog.module.css'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 class Tags extends React.Component {
   render() {

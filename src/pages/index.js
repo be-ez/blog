@@ -2,11 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Hero from '../components/hero'
-import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
-import {
-  Box } from 'rebass'
+import { Box } from 'rebass'
+
+import Hero from '../components/Hero'
+import Layout from '../components/Layout'
+import ArticlePreview from '../components/ArticlePreview'
+
 
 class RootIndex extends React.Component {
   render() {

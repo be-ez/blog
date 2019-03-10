@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import RichText from "./RichText"
-import styles from '../article-preview.module.css'
+import styles from '../ArticlePreview/article-preview.module.css'
 
 function LinkIfParentSlug({parent_slug, slug, title}){
   if (parent_slug){

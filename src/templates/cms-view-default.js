@@ -2,10 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-import Img from 'gatsby-image'
-import Layout from '../components/layout'
-import ViewContent from '../components/contentful/View'
-import heroStyles from '../components/hero.module.css'
+
+import Layout from '../components/Layout'
+import ViewContent from '../components/Contentful/View'
 
 
 class ViewDefaultTemplate extends React.Component {

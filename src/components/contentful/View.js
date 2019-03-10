@@ -1,16 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import { Flex } from 'rebass'
+
 import ContentfulContent from './GenericContent'
 import ContentfulCard from './Card'
-import ArticlePreview from '../article-preview'
+import ArticlePreview from '../ArticlePreview'
 
 function ViewContent({ title, content, slug }) {
   if (Array.isArray(content)){
     return (
       <div>
       <h2 className="section-headline">{title}</h2>
-      <ul className="article-list">
+      <Flex >
         {content.map((node ) => {
           if (node.__typename == "ContentfulBlogPost"){
             return (
@@ -25,11 +27,11 @@ function ViewContent({ title, content, slug }) {
             )
           } else if (node.__typename == "ContentfulCard"){
             return (
-            <ContentfulCard key={node.slug} content={node} />
+            <ContentfulCard slug={slug} key={node.slug} content={node} />
             )
           }
         })}
-      </ul>
+      </Flex>
       </div>
     )
   }else if (content.__typename == "ContentfulGenericContent"){

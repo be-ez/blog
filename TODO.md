@@ -1,50 +1,9 @@
-# Personal Notebook
-
-
-
-I've tried plenty of ways other then a notebook to write content Evernote, Google Keep / macOS Stickies, One Note and somethings from each have stuck.  I think generating words is probably healthy for the mind and theres some level of quality difference that happens when you write for general consumption. This is basically the ethos of this repo.
-
-
-
-#### How it will work
-
-- Markdown pages in folders here will map to posts, projects and pages
-
-  \> pages
-
-  ​	\> About.md
-
-  \> images
-
-  ​	\> image_1.jpg
-
-  ​	\> image_2.jpg
-
-  \> projects
-
-  ​	\> project_1.md
-
-  \> blog
-
-  ​	\> September\_09\_2016.md
-
-  ​	> January\_09\_2017.md
-
-- Some static content providor can cosume this and produce a site. 
-
-- Github can serve the md content. 
-
-- Hosting can be done through github pages
-
-- CDN to come via integration- Write first blog post ✅
-  - Choosing shoulders to stand on ✅
-    - create-react-app ❌
-      # Inspiring, helpful to get started and nice standard webpack config. Integrated react-mdc here without "ejecting".
-    - react-mdc ✅
-  - developing gatsby blog consumer ❌
-
-- Write json blog schema ✅
-- Finish Gatsby or Material Integration ✅
-- Add first react dev effort as second consumer
-   - Why bother ^? Gatsby is basically the extendable version of the blog platform I was building.
-
+TODO:
+- pull from master and get latest version of contentful data
+- better offline development story
+- cms-view and cms-view-default need to be collapsed somehow and the slug/content query abstracted so it can work on all content type with slug. Any content type with slug should be able to be rendered to a standalone page via cms-view. The fragment for the component should be sotred in the compennt object itself.
+- add some live photo and the livephoto JS form apple to the static folder for development pre-cms based images. I suspect the live photo will be content type in CMS with slug, title, image and video.
+- build out page_layouts and include our modifcations to html.js
+- In contentful view, there should be a drop down menu for various page view types.
+- Find naming / folder convention for react code.
+- Sync this TODO.md with github issues in Chicago.

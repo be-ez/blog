@@ -33,6 +33,9 @@ exports.createPages = ({ graphql, actions }) => {
                   content{
                     ... on ContentfulCard {
                       slug
+                      content{
+                        slug
+                      }
                       __typename
                     }
                     ... on ContentfulGenericContent{
@@ -89,12 +92,21 @@ exports.createPages = ({ graphql, actions }) => {
                     parent_slug: view.node.slug
                   },
                 })
-              } else if (content.__typename == 'ContentfulGenericContent'){
+              } else if (content.__typename == ['ContentfulGenericContent'] ){
                 createPage({
                   path: `/${view.node.slug}/${content.slug}/`,
                   component: cmsViewDefault,
                   context: {
                     slug: content.slug,
+                    parent_slug: view.node.slug
+                  },
+                })
+              } else if (content.__typename == ['ContentfulCard'] ){
+                createPage({
+                  path: `/${view.node.slug}/${content.content.slug}/`,
+                  component: cmsViewDefault,
+                  context: {
+                    slug: content.content.slug,
                     parent_slug: view.node.slug
                   },
                 })
