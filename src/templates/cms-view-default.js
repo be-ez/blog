@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
 import Layout from '../components/Layout'
-import ViewContent from '../components/Contentful/View'
+import ViewContent from '../components/contentful/View'
 
 
 class ViewDefaultTemplate extends React.Component {
