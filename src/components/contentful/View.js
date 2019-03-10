@@ -21,7 +21,6 @@ function ViewContent({ title, content, slug }) {
               </li>
             )
           } else if( node.__typename == "ContentfulGenericContent" ){
-            // console.log(node.slug)
             return (
               <ContentfulContent slug={slug} key={node.slug} content={node} />
             )
@@ -40,7 +39,6 @@ function ViewContent({ title, content, slug }) {
       <ContentfulContent slug={slug} key={content.slug}  content={content} />
       )
   }
-  console.log(content.__typename)
   return (<p>Something Broke in Rendering the Content Type via ViewContent</p>)
 }
 

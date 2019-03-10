@@ -10,7 +10,6 @@ import {
 } from 'rebass'
 
 function TitleOrLink(title, slug){
-  console.log(title)
   if (make_link){
     return (
       <Link to={slug}>
@@ -30,7 +29,6 @@ function TitleOrLink(title, slug){
 
 export default function ContentfulCard({content, slug}) {
   const inner_content =content.content
-  console.log(inner_content.slug)
   return (
       <Box
         width={[1/2]}

@@ -1,7 +1,8 @@
 {
   "name": "gatsby-blog-contentful-views",
   "engines":{
-    "node":"8.15.0"
+    "node":"8.15.0",
+    "yarn": "1.13.0"
   },
   "description": "Blog",
   "version": "1.0.0",
