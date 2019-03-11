@@ -21,7 +21,7 @@ function ViewContent({ title, content, slug }) {
                 width={[1/2]}
                 px={3}
                 >
-                <ArticlePreview article={node} />
+                <ArticlePreview article={node} slug={slug} />
               </Box>
             )
           } else if( node.__typename == "ContentfulGenericContent" ){

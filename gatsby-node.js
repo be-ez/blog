@@ -45,6 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                     ... on ContentfulBlogPost {
                       slug
+                      tags
                       __typename
                     }
                   }
@@ -134,33 +135,6 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
         })
-
-        // const posts = result.data.allContentfulBlogPost.edges
-        // posts.forEach((post, index) => {
-        //   post.node.tags.forEach((tag) => {
-        //     if (!(tag in tag_map)){
-        //       tag_map[tag] = {}
-        //     }
-        //     if (!("blog" in tag_map[tag])){
-        //       tag_map[tag]["blog"] = []
-        //     }
-        //     tag_map[tag]["blog"].push(post.node.slug)
-        //   })
-        //   createPage({
-        //     path: `/blog/${post.node.slug}/`,
-        //     component: blogPost,
-        //     context: {
-        //       slug: post.node.slug
-        //     },
-        //   })
-        // })
-
-        // // Iterate through each post, putting all found tags into `tags`
-        // _.each(posts, edge => {
-        //   if (_.get(edge, "node.tags")) {
-        //     tags = tags.concat(edge.node.tags)
-        //   }
-        // })
 
         // Eliminate duplicate tags
         tags = _.uniq(tags)

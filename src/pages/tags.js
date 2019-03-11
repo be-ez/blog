@@ -19,6 +19,17 @@ class Tags extends React.Component {
     const blogGroup = get(this, 'props.data.allContentfulBlogPost.group')
     const contentGroup = get(this, 'props.data.allContentfulGenericContent.group')
     const group = union(blogGroup, contentGroup)
+    let seen = new Set();
+    let seenGroup = {}
+    group.map( tag => {
+      if (seen.has(tag.fieldValue)){
+        seenGroup[tag.fieldValue] += tag.totalCount
+      } else {
+        seen.add(tag.fieldValue)
+        seenGroup[tag.fieldValue] = tag.totalCount
+      }
+    })
+    console.log(seenGroup)
     const views = get(this, 'props.data.allContentfulView.edges')
     return (
       <Layout views={views} location={this.props.location}>
@@ -28,10 +39,10 @@ class Tags extends React.Component {
           <div className="wrapper">
             <h2>Tags</h2>
             <ul>
-              {group.map(tag => (
-                <li key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
+              {Object.entries(seenGroup).map(([fieldValue, totalCount]) => (
+                <li key={fieldValue}>
+                  <Link to={`/tags/${kebabCase(fieldValue)}/`}>
+                    {fieldValue} ({totalCount})
                   </Link>
                 </li>
               ))}

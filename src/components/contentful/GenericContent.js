@@ -24,6 +24,7 @@ function ContentfulContent({content, slug}) {
           slug={content.slug}
           title={content.title}
         />
+        <small>{content.createdAt}</small>
         {/* <RichText document={content.body.content[0]} /> */}
         <div
                 dangerouslySetInnerHTML={{
@@ -56,6 +57,7 @@ export default ContentfulContent
 export const genericContentFragment = graphql`
   fragment GenericContentFragment on ContentfulGenericContent  {
     title
+    createdAt(formatString: "MMMM Do, YYYY")
     slug
     tags
     body {

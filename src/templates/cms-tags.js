@@ -43,8 +43,8 @@ class TagsTemplate extends React.Component {
                           p={2}
                           key={path}
                         >
-                        <ArticlePreview article={node} />
                         <p>{viewSlug}/{tagSlug}</p>
+                        <ArticlePreview article={node} slug={viewSlug} />
                         </Box>
                     )
                   })}
@@ -60,23 +60,6 @@ class TagsTemplate extends React.Component {
                         </Box>
                     )
                   })}
-
-                  {/* {(tagPathLinks || []).map(([ viewSlug, tagSlug ]) => {
-                    if (!genericContent){
-                      return
-                    }
-                    const content = genericContent.filter(edge => edge.node.slug == tagSlug);
-                    console.log(content)
-
-                    return (
-                        <Box  width={[1/2]}
-                              key={viewSlug+tagSlug}
-                        >
-                          <p>{viewSlug}/{tagSlug}</p>
-                          <ContentfulContent slug={viewSlug} key={tagSlug} content={content[0].node} />
-                        </Box>
-                    )
-                  })} */}
               </div>
             </div>
         </Layout>
@@ -129,11 +112,13 @@ export const pageQuery = graphql`
     }
     allContentfulGenericContent(
         limit: 2000
+        sort: { order: DESC, fields: [createdAt] }
         filter: { tags: { in: [$tag] } }
       ) {
         totalCount
         edges {
           node{
+            createdAt(formatString: "MMMM Do, YYYY")
             tags
             ... GenericContentFragment
           }
