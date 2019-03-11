@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Flex } from 'rebass'
+import { Flex, Box } from 'rebass'
 
 import ContentfulContent from './GenericContent'
 import ContentfulCard from './Card'
@@ -16,13 +16,21 @@ function ViewContent({ title, content, slug }) {
         {content.map((node ) => {
           if (node.__typename == "ContentfulBlogPost"){
             return (
-              <li key={node.slug}>
+              <Box
+                  width={[1/2]}
+                  px={3}
+                >
                 <ArticlePreview article={node} />
-              </li>
+              </Box>
             )
           } else if( node.__typename == "ContentfulGenericContent" ){
             return (
-              <ContentfulContent slug={slug} key={node.slug} content={node} />
+              <Box
+                  width={[1/2]}
+                  px={3}
+                >
+                <ContentfulContent slug={slug} key={node.slug} content={node} />
+              </Box>
             )
           } else if (node.__typename == "ContentfulCard"){
             return (
