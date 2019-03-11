@@ -34,6 +34,7 @@ class TagsTemplate extends React.Component {
             <div className="wrapper">
               <Heading><Card>{tag}</Card></Heading>
                 {(blogPosts || []).map(({ node }) => {
+                    let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)[0]
                     const { slug, title } = node
                     const path = 'blog/' + slug
                     return (
@@ -43,14 +44,30 @@ class TagsTemplate extends React.Component {
                           key={path}
                         >
                         <ArticlePreview article={node} />
+                        <p>{viewSlug}/{tagSlug}</p>
                         </Box>
                     )
                   })}
-                  {(tagPathLinks || []).map(([ viewSlug, tagSlug ]) => {
+
+                  {(genericContent || []).map(({node}) => {
+                    let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)[0]
+                      return (
+                        <Box  width={[1/2]}
+                              key={viewSlug+tagSlug}
+                        >
+                          <p>{viewSlug}/{tagSlug}</p>
+                          <ContentfulContent slug={viewSlug} key={tagSlug} content={node} />
+                        </Box>
+                    )
+                  })}
+
+                  {/* {(tagPathLinks || []).map(([ viewSlug, tagSlug ]) => {
                     if (!genericContent){
                       return
                     }
                     const content = genericContent.filter(edge => edge.node.slug == tagSlug);
+                    console.log(content)
+
                     return (
                         <Box  width={[1/2]}
                               key={viewSlug+tagSlug}
@@ -59,7 +76,7 @@ class TagsTemplate extends React.Component {
                           <ContentfulContent slug={viewSlug} key={tagSlug} content={content[0].node} />
                         </Box>
                     )
-                  })}
+                  })} */}
               </div>
             </div>
         </Layout>
