@@ -32,15 +32,15 @@ Possible to write posts in MDX with either React of Vue
         [ ✅ ] Rich Text
             [ ✅ ] Images
             [ ✅ ] Formatting (Bold, Header Pagebreak etc.) 
-            [ ❌ ] Video
+            [ ✅ ] Video
             [ ❌ ] Fluid Images in Rich Text
         [ ✅ ] Sub-View Templates
             [ ✅ ] Generic
             [ ✅ ] Blog
-            [ ❌ ] Card
+            [ ✅ ] Card
         [ ❌ ] Mobile
             [ ❌ ] Breakpoints
-            [ ❌ ] Flexbox Grid in base layout
+            [ ✅ ] Flexbox Grid in base layout
         [ ❌ ] Customize Layouts
             [ ❌ ] Card
             [ ❌ ] View
