@@ -35,6 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
                       slug
                       content{
                         slug
+                        tags
                       }
                       __typename
                     }
@@ -104,6 +105,7 @@ exports.createPages = ({ graphql, actions }) => {
                   },
                 })
               } else if (content.__typename == ['ContentfulGenericContent'] ){
+                tags = tags.concat(content.content.tags)
                 createPage({
                   path: `/${view.node.slug}/${content.slug}/`,
                   component: cmsViewDefault,
@@ -113,6 +115,19 @@ exports.createPages = ({ graphql, actions }) => {
                   },
                 })
               } else if (content.__typename == ['ContentfulCard'] ){
+                tags = tags.concat(content.content.tags)
+                if (content.content.tags){
+                  content.content.tags.forEach((tag) => {
+                    if (!(tag in tag_map)){
+                      tag_map[tag] = {}
+                    }
+                    if (!(view.node.slug in tag_map[tag])){
+                      tag_map[tag][view.node.slug] = []
+                    }
+                    tag_map[tag][view.node.slug].push(content.content.slug)
+                  })
+                }
+
                 createPage({
                   path: `/${view.node.slug}/${content.content.slug}/`,
                   component: cmsViewDefault,

@@ -23,7 +23,6 @@ function ContentfulContent({content, slug}) {
     return (
       <Card
         p={3}
-        m={3}
         width={[1]}
         border={'solid'}
         borderColor={'black'}

@@ -66,7 +66,7 @@ class TagsTemplate extends React.Component {
                   })}
 
                   {(genericContent || []).map(({node}) => {
-                    let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)[0]
+                    let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)
                       return (
                         <Flex
                         key={viewSlug+tagSlug}
@@ -80,7 +80,6 @@ class TagsTemplate extends React.Component {
                         <Box
                           width={7/8}
                           p={2}
-                          flex='1 1 auto'
                         >
                         <Collapsible trigger={node.title}>
                           <ContentfulContent slug={viewSlug} key={tagSlug} content={node} />
