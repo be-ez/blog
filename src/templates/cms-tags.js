@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Collapsible from 'react-collapsible';
 import get from 'lodash/get'
@@ -50,7 +50,7 @@ class TagsTemplate extends React.Component {
                         <Box
                         width={1/8}
                         >
-                          <div className='right'>{viewSlug}/{tagSlug}</div>
+                          <div className='right'><Link to={"/"+viewSlug+"/"+tagSlug}>{viewSlug}/{tagSlug}</Link></div>
                         </Box>
                         <Box
                           width={7/8}
@@ -66,7 +66,7 @@ class TagsTemplate extends React.Component {
                   })}
 
                   {(genericContent || []).map(({node}) => {
-                    let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)
+                    let [viewSlug, tagSlug] = tagPathLinks.filter(([_, tagSlug]) => tagSlug==node.slug)[0]
                       return (
                         <Flex
                         key={viewSlug+tagSlug}
@@ -75,7 +75,7 @@ class TagsTemplate extends React.Component {
                         <Box
                         width={1/8}
                         >
-                          <div className='right'>{viewSlug}/{tagSlug}</div>
+                          <div className='right'><Link to={"/"+viewSlug+"/"+tagSlug}>{viewSlug}/{tagSlug}</Link></div>
                         </Box>
                         <Box
                           width={7/8}
