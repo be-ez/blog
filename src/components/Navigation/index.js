@@ -28,7 +28,7 @@ class nav extends React.Component {
       <nav role="navigation">
       <ul className={styles.navigation}>
         <li className={styles.navigationItem}>
-          <Link to="/">🏚</Link>
+          <Link to="/">🏡</Link>
         </li>
         <NavIfProps views={views} />
         <li className={styles.navigationItem}>

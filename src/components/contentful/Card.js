@@ -33,6 +33,7 @@ export default function ContentfulCard({content, slug}) {
       <Box
         width={[1, 1/2]}
         height={1}
+        py='3'
         Flex
       >
         <Card
@@ -42,7 +43,7 @@ export default function ContentfulCard({content, slug}) {
           <Img
               alt={content.slug}
               fluid={content.image.fluid} />
-          <Box height={5} px={1}>
+          <Box height={5} p={1} px={2}>
           <Link to={'/'+slug + '/'+content.content.slug +'/'}>
               <Heading as='h1'>
                 {inner_content.title}
