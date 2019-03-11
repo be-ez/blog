@@ -30,6 +30,14 @@ function ContentfulContent({content, slug}) {
                   __html: content.body.childContentfulRichText.html,
                 }}
               />
+        <br />
+        <div>
+          {(content.tags || []).map(tag => (
+            <Link to={'/tags/' + tag.toLowerCase()} className={styles.tag} key={content.slug+tag}>
+              {tag}
+            </Link>
+          ))}
+        </div>
       </div>
     )
   }
@@ -49,6 +57,7 @@ export const genericContentFragment = graphql`
   fragment GenericContentFragment on ContentfulGenericContent  {
     title
     slug
+    tags
     body {
       id
       nodeType

@@ -9,6 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
     const cmsView = path.resolve('./src/templates/cms-view.js')
     const tagTemplate = path.resolve('./src/templates/tags.js')
+    const newtagTemplate = path.resolve('./src/templates/cms-tags.js')
     const cmsViewDefault = path.resolve('./src/templates/cms-view-default.js')
 
     resolve(
@@ -40,6 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                     ... on ContentfulGenericContent{
                       slug
+                      tags
                       __typename
                     }
                     ... on ContentfulBlogPost {
@@ -60,6 +62,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
          // Tag pages:
         let tags = []
+        let tag_map = {}
         const views = result.data.allContentfulView.edges
         views.forEach((view, index) => {
           view.node.content.forEach((content) => {
@@ -69,9 +72,17 @@ exports.createPages = ({ graphql, actions }) => {
           _.each(view.node.content, edge => {
             if (_.get(edge, "tags")) {
               tags = tags.concat(edge.tags)
+              edge.tags.forEach((tag) => {
+                if (!(tag in tag_map)){
+                  tag_map[tag] = {}
+                }
+                if (!(view.node.slug in tag_map[tag])){
+                  tag_map[tag][view.node.slug] = []
+                }
+                tag_map[tag][view.node.slug].push(edge.slug)
+              })
             }
           })
-
           if (view.node.subpages){
             view.node.content.forEach((content, index) => {
               if (content.__typename == 'ContentfulBlogPost'){
@@ -127,6 +138,15 @@ exports.createPages = ({ graphql, actions }) => {
 
         const posts = result.data.allContentfulBlogPost.edges
         posts.forEach((post, index) => {
+          post.node.tags.forEach((tag) => {
+            if (!(tag in tag_map)){
+              tag_map[tag] = {}
+            }
+            if (!("blog" in tag_map[tag])){
+              tag_map[tag]["blog"] = []
+            }
+            tag_map[tag]["blog"].push(post.node.slug)
+          })
           createPage({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
@@ -142,15 +162,22 @@ exports.createPages = ({ graphql, actions }) => {
             tags = tags.concat(edge.node.tags)
           }
         })
+
         // Eliminate duplicate tags
         tags = _.uniq(tags)
-        // Make tag pages
         tags.forEach(tag => {
+          var tagPathLinks = []
+          for (var viewSlug in tag_map[tag]) {
+            tag_map[tag][viewSlug].forEach(slug => {
+              tagPathLinks.push([viewSlug, slug])
+            })
+          }
           createPage({
             path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagTemplate,
+            component: newtagTemplate,
             context: {
               tag,
+              tagPathLinks
             },
           })
         })

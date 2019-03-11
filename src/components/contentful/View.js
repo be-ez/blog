@@ -17,8 +17,9 @@ function ViewContent({ title, content, slug }) {
           if (node.__typename == "ContentfulBlogPost"){
             return (
               <Box
-                  width={[1/2]}
-                  px={3}
+                key={node.slug}
+                width={[1/2]}
+                px={3}
                 >
                 <ArticlePreview article={node} />
               </Box>
@@ -28,8 +29,9 @@ function ViewContent({ title, content, slug }) {
               <Box
                   width={[1/2]}
                   px={3}
+                  key={node.slug}
                 >
-                <ContentfulContent slug={slug} key={node.slug} content={node} />
+                <ContentfulContent slug={slug}  content={node} />
               </Box>
             )
           } else if (node.__typename == "ContentfulCard"){
