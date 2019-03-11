@@ -66,7 +66,9 @@ class TagsTemplate extends React.Component {
                   })}
 
                   {(genericContent || []).map(({node}) => {
-                    let [viewSlug, tagSlug] = tagPathLinks.filter(([_, tagSlug]) => tagSlug==node.slug)[0]
+                    let search = tagPathLinks.filter(([_, tagSlug]) => tagSlug==node.slug)
+                    if (search.length >= 1){
+                      let [viewSlug, tagSlug] = search[0]
                       return (
                         <Flex
                         key={viewSlug+tagSlug}
@@ -88,6 +90,8 @@ class TagsTemplate extends React.Component {
                       </Flex>
 
                     )
+                    }
+
                   })}
               </div>
             </div>
