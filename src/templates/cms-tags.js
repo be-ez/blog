@@ -1,14 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import Collapsible from 'react-collapsible';
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import ArticlePreview from '../components/ArticlePreview'
 import ContentfulContent from '../components/contentful/GenericContent'
+import styles from '../components/contentful/Collapsible.scss'
+
 import ViewContent from '../components/contentful/View'
 import heroStyles from '../components/Hero/hero.module.css'
 import {
+  Flex,
   Box,
   Card,
   Heading,
@@ -33,31 +37,57 @@ class TagsTemplate extends React.Component {
             <Helmet title={siteTitle +"-"+ tag} />
             <div className="wrapper">
               <Heading><Card>{tag}</Card></Heading>
+
                 {(blogPosts || []).map(({ node }) => {
                     let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)[0]
                     const { slug, title } = node
                     const path = 'blog/' + slug
                     return (
+                      <Flex
+                       key={path}
+                      className="align-items-center"
+                      >
                         <Box
-                          width={[1/2]}
-                          p={2}
-                          key={path}
+                        width={1/8}
                         >
-                        <p>{viewSlug}/{tagSlug}</p>
-                        <ArticlePreview article={node} slug={viewSlug} />
+                          <div className='right'>{viewSlug}/{tagSlug}</div>
                         </Box>
+                        <Box
+                          width={7/8}
+                          p={2}
+                          flex='1 1 auto'
+                        >
+                        <Collapsible trigger={title}>
+                          <ArticlePreview className='center' article={node} slug={viewSlug} />
+                        </Collapsible>
+                        </Box>
+                      </Flex>
                     )
                   })}
 
                   {(genericContent || []).map(({node}) => {
                     let [viewSlug, tagSlug] = tagPathLinks.filter(([viewSlug, tagSlug]) => tagSlug==node.slug)[0]
                       return (
-                        <Box  width={[1/2]}
-                              key={viewSlug+tagSlug}
+                        <Flex
+                        key={viewSlug+tagSlug}
+                      className="align-items-center"
+                      >
+                        <Box
+                        width={1/8}
                         >
-                          <p>{viewSlug}/{tagSlug}</p>
-                          <ContentfulContent slug={viewSlug} key={tagSlug} content={node} />
+                          <div className='right'>{viewSlug}/{tagSlug}</div>
                         </Box>
+                        <Box
+                          width={7/8}
+                          p={2}
+                          flex='1 1 auto'
+                        >
+                        <Collapsible trigger={node.title}>
+                          <ContentfulContent slug={viewSlug} key={tagSlug} content={node} />
+                        </Collapsible>
+                        </Box>
+                      </Flex>
+
                     )
                   })}
               </div>

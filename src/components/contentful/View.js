@@ -7,32 +7,29 @@ import ContentfulContent from './GenericContent'
 import ContentfulCard from './Card'
 import ArticlePreview from '../ArticlePreview'
 
+import styles from './Collapsible.scss'
+
 function ViewContent({ title, content, slug }) {
   if (Array.isArray(content)){
     return (
       <div>
       <h2 className="section-headline">{title}</h2>
-      <Flex >
+      <Flex flexWrap='wrap' mx={-2}>
         {content.map((node ) => {
           if (node.__typename == "ContentfulBlogPost"){
             return (
               <Box
                 key={node.slug}
-                width={[1/2]}
-                px={3}
+                width={[1, 1/2]}
+                p={3}
+                Flex
                 >
                 <ArticlePreview article={node} slug={slug} />
               </Box>
             )
           } else if( node.__typename == "ContentfulGenericContent" ){
             return (
-              <Box
-                  width={[1/2]}
-                  px={3}
-                  key={node.slug}
-                >
-                <ContentfulContent slug={slug}  content={node} />
-              </Box>
+                <ContentfulContent key={node.slug} slug={slug}  content={node} />
             )
           } else if (node.__typename == "ContentfulCard"){
             return (

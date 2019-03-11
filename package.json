@@ -1,7 +1,7 @@
 {
   "name": "gatsby-blog-contentful-views",
-  "engines":{
-    "node":"8.15.0",
+  "engines": {
+    "node": "8.15.0",
     "yarn": "1.13.0"
   },
   "description": "Blog",
@@ -18,12 +18,15 @@
     "gatsby-plugin-manifest": "^2.0.17",
     "gatsby-plugin-offline": "^2.0.23",
     "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sass": "^2.0.10",
     "gatsby-plugin-sharp": "^2.0.20",
     "gatsby-source-contentful": "^2.0.29",
     "gatsby-transformer-remark": "^2.2.5",
     "gatsby-transformer-sharp": "^2.1.13",
     "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
     "react": "^16.8.2",
+    "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "rebass": "^3.0.1",

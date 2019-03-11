@@ -29,7 +29,6 @@ class Tags extends React.Component {
         seenGroup[tag.fieldValue] = tag.totalCount
       }
     })
-    console.log(seenGroup)
     const views = get(this, 'props.data.allContentfulView.edges')
     return (
       <Layout views={views} location={this.props.location}>

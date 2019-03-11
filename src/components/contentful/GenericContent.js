@@ -1,5 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import {
+  Card,
+} from 'rebass'
 import styles from '../ArticlePreview/article-preview.module.css'
 
 function LinkIfParentSlug({parent_slug, slug, title}){
@@ -18,7 +21,14 @@ function LinkIfParentSlug({parent_slug, slug, title}){
 function ContentfulContent({content, slug}) {
   if (content.body){
     return (
-      <div>
+      <Card
+        p={3}
+        m={3}
+        width={[1]}
+        border={'solid'}
+        borderColor={'black'}
+        borderRadius={8}
+      >
         <LinkIfParentSlug
           parent_slug={slug}
           slug={content.slug}
@@ -39,7 +49,7 @@ function ContentfulContent({content, slug}) {
             </Link>
           ))}
         </div>
-      </div>
+      </Card>
     )
   }
   return (

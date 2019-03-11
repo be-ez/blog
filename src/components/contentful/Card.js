@@ -31,7 +31,9 @@ export default function ContentfulCard({content, slug}) {
   const inner_content =content.content
   return (
       <Box
-        width={[1/2]}
+        width={[1, 1/2]}
+        height={1}
+        Flex
       >
         <Card
           boxShadow='0 0 16px rgba(0, 0, 0, .25)'
