@@ -43,7 +43,14 @@ function ViewContent({ title, content, slug }) {
   }else if (content.__typename == "ContentfulGenericContent"){
 
     return (
-      <ContentfulContent slug={slug} key={content.slug}  content={content} />
+      <Box
+      key={content.slug}
+      width={[1, 4/5]}
+      p={3}
+      mx={[0,'auto']}
+      >
+      <ContentfulContent slug={slug}  content={content} />
+      </Box>
       )
   }
   return (<p>Something Broke in Rendering the Content Type via ViewContent</p>)
