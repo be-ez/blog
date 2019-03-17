@@ -16,7 +16,7 @@ body {
   -webkit-touch-callout: none;
 }
 
-img {
+img, video {
   display: block;
   width: 100%;
 }

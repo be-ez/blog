@@ -90,7 +90,15 @@ module.exports = {
         renderOptions: {
           renderNode: {
             [BLOCKS.EMBEDDED_ASSET]: node => {
-              return `<img src="${node.data.target.fields.file['en-US'].url}" />`
+              if (node.data.target.fields.file['en-US'].contentType == 'video/quicktime'){
+                // Return video tag for .mov
+                return `<video  type="video/quicktime" autoplay muted loop src="${node.data.target.fields.file['en-US'].url}" />`
+              } else if (node.data.target.fields.file['en-US'].contentType == 'video/mp4'){
+                // return video tag for mp4
+                return `<video type="video/mp4" autoplay muted loop src="${node.data.target.fields.file['en-US'].url}" />`
+              } else {
+                return `<img src="${node.data.target.fields.file['en-US'].url}" />`
+              }
             }
           },
         },
