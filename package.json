@@ -25,6 +25,7 @@
     "gatsby-transformer-sharp": "^2.1.13",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
+    "purge-cloudflare-cache": "^1.2.2",
     "react": "^16.8.2",
     "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.2",
@@ -61,12 +62,13 @@
     "dev": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clear-cache": "npx purge -e $CLOUDFLARE_EMAIL -k $CLOUDFLARE_API -z $CLOUDFLARE_ZONE -d $CLOUDFLARE_URL -f public",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
     "setup": "node ./bin/setup.js",
-    "heroku-postbuild": "gatsby build",
+    "heroku-postbuild": "gatsby build && npm run clear-cache",
     "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf "
   }
 }
