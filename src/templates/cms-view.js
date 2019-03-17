@@ -19,14 +19,18 @@ class ViewTemplate extends React.Component {
          <Layout views={views} location={this.props.location} >
           <div style={{ background: '#fff' }}>
             <Helmet title={siteTitle +"-"+ view.slug} />
-            <div className={heroStyles.hero}>
+            {view.heroImage ? (
+              <div className={heroStyles.hero}>
               {/* TODO: Implement Header */}
               <Img
                 className={heroStyles.heroImage}
                 alt={view.title}
-                fluid={view.heroImage.fluid}
+                fluid={view.heroImage.fluid ? view.heroImage.fluid : 'not'}
               />
             </div>
+            ) : (
+              <div></div>
+            )}
             <div className="wrapper">
               <ViewContent slug={view.slug} title={view.title} content={view.content} />
             </div>
