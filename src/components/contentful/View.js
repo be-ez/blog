@@ -5,6 +5,7 @@ import { Flex, Box } from 'rebass'
 
 import ContentfulContent from './GenericContent'
 import ContentfulCard from './Card'
+import ContentfulLivePhoto from './LivePhoto'
 import ArticlePreview from '../ArticlePreview'
 
 import styles from './Collapsible.scss'
@@ -34,6 +35,14 @@ function ViewContent({ title, content, slug }) {
           } else if (node.__typename == "ContentfulCard"){
             return (
             <ContentfulCard slug={slug} key={node.slug} content={node} />
+            )
+          } else if (node.__typename == "ContentfulCard"){
+            return (
+            <ContentfulCard slug={slug} key={node.slug} content={node} />
+            )
+          } else if (node.__typename == "ContentfulLivePhoto"){
+            return (
+              <ContentfulLivePhoto key={node.id} content={node} />
             )
           }
         })}
@@ -67,6 +76,9 @@ export const viewFragment = graphql`
           __typename
           ... on ContentfulCard {
             ... ContentfulCardFragment
+          }
+          ... on ContentfulLivePhoto{
+            ... ContentfulLivePhotoFragment
           }
           ... on ContentfulGenericContent {
             ... GenericContentFragment

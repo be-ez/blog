@@ -36,6 +36,11 @@ a {
   color: currentColor;
 }
 
+.livephoto {
+  width: 320px; 
+  height: 320px;
+}
+
 .wrapper {
   width: calc(100% - 10vmin);
   margin: 0 auto;

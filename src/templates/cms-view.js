@@ -75,6 +75,9 @@ export const pageQuery = graphql`
         ... on ContentfulGenericContent{
           ... GenericContentFragment
         }
+        ... on ContentfulLivePhoto{
+          ... ContentfulLivePhotoFragment
+        }
         ... on ContentfulBlogPost {
           title
           slug
