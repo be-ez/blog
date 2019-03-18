@@ -4,6 +4,7 @@ import get from 'lodash/get'
 import union from 'lodash/union'
 import Helmet from 'react-helmet'
 import { Box } from 'rebass'
+import Collapsible from 'react-collapsible';
 
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
@@ -49,9 +50,10 @@ class RootIndex extends React.Component {
                 )
               })}
             </ul>
-            <small className="section-headline">All Tags</small>
-            <Box py={1} >
-            <TagsList seenGroup={seenGroup} />
+            <Box py={4} >
+              <Collapsible trigger={"All Tags"}>
+                <TagsList seenGroup={seenGroup} />
+              </Collapsible>
             </Box>
           </div>
         </div>

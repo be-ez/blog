@@ -21,7 +21,6 @@ $breakpointMed: 767px;
 .Collapsible__contentInner {
   padding: 10px;
   border: 1px solid $lightGrey;
-  border-top: 0;
 
   p {
     margin-bottom: 10px;
@@ -64,14 +63,13 @@ $breakpointMed: 767px;
     right: 10px;
     top: 10px;
     display: block;
-    transition: transform 100ms;
+    transition: transform 50ms;
   }
 
   &.is-open {
     &:after {
       transform: rotateZ(180deg);
     }
-    display: none;
   }
 
   &.is-disabled {
