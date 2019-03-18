@@ -2,9 +2,23 @@ const Promise = require('bluebird')
 const path = require('path')
 const _ = require("lodash")
 
-//https://github.com/gatsbyjs/gatsby/issues/11934
-exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+//https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
+exports.onCreateWebpackConfig = ({ getConfig, stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /livephotoskit/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+
   const config = getConfig()
+  //https://github.com/gatsbyjs/gatsby/issues/11934
   if (stage.startsWith('develop') && config.resolve) {
     config.resolve.alias = {
       ...config.resolve.alias,
