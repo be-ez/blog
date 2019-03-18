@@ -8,12 +8,13 @@
   display: inline-block;
   padding: .33333rem .5rem;
   line-height: 1;
+  box-sizing: border-box;
   border-radius: 2px;
   border: 1px solid #A0A0A0;
   margin-right: .5em;
 }
 .tag:hover{
   color: rgb(127, 189, 114);
-  border: 2px solid rgb(127, 189, 114);
+  border-width: 1px black;
   box-shadow: #A0A0A0
 }

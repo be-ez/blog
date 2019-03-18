@@ -1,11 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
+import union from 'lodash/union'
 import Helmet from 'react-helmet'
 import { Box } from 'rebass'
 
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
+import { TagsList } from './tags'
 import ArticlePreview from '../components/ArticlePreview'
 
 
@@ -15,6 +17,21 @@ class RootIndex extends React.Component {
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
     const views = get(this, 'props.data.allContentfulView.edges')
+
+    const blogGroup = get(this, 'props.data.allContentfulBlogPost.group')
+    const contentGroup = get(this, 'props.data.allContentfulGenericContent.group')
+    const group = union(blogGroup, contentGroup)
+    let seen = new Set();
+    let seenGroup = {}
+    group.map( tag => {
+      if (seen.has(tag.fieldValue)){
+        seenGroup[tag.fieldValue] += tag.totalCount
+      } else {
+        seen.add(tag.fieldValue)
+        seenGroup[tag.fieldValue] = tag.totalCount
+      }
+    })
+
     return (
       <Layout views={views} location={this.props.location}>
         <div style={{ background: '#fff' }}>
@@ -32,6 +49,10 @@ class RootIndex extends React.Component {
                 )
               })}
             </ul>
+            <small className="section-headline">All Tags</small>
+            <Box py={1} >
+            <TagsList seenGroup={seenGroup} />
+            </Box>
           </div>
         </div>
       </Layout>
@@ -57,7 +78,17 @@ export const pageQuery = graphql`
         }
       }
     }
+    allContentfulGenericContent(limit: 2000) {
+      group(field: tags) {
+        fieldValue
+        totalCount
+      }
+    }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+      group(field: tags) {
+        fieldValue
+        totalCount
+      }
       edges {
         node {
           title

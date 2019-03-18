@@ -9,9 +9,87 @@ import union from 'lodash/union'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 
+import {
+  Box,
+  Card,
+  Flex
+} from 'rebass'
+
 // Layout
 import styles from './blog.module.css'
 import Layout from '../components/Layout'
+
+class TagPil extends React.Component {
+  
+  render (){
+    const {
+      tag,
+      count
+    } = this.props;
+    var pilColor = "#f2f2f2";
+
+    if (count >= 3 &&  count < 9){
+      pilColor = "lightskyblue"
+    } else if ( count >= 10 ) {
+      pilColor ="plum"
+    }
+      
+    return (
+    <Link className="new-tag" to={`/tags/${kebabCase(tag)}/`}>
+      <Card
+        className="center"
+        borderColor="#A0A0A0"
+        boxShadow='0 0 2px rgba(0, 0, 0, .25)'
+        m={[1]}
+        borderRadius={2}
+        p={[1]}
+        width={'auto'}
+        Flex
+      >
+      <Flex justifyContent='space-between'>
+        <Box
+        width={2/3}
+        Flex
+        pr={2}
+        >
+          
+          {tag}
+        </Box>
+        <Card
+          ml={2}
+          px={2}
+          Flex
+          className="center"
+          borderRadius={50}
+          bg={pilColor}
+          width={1/3}
+        >
+          {count}
+        </Card>
+      </Flex>
+      </Card>
+    </Link>
+    )
+  }
+  
+}
+
+export class TagsList extends React.Component {
+  render() {
+    const {
+      seenGroup
+    } = this.props;
+    return (
+      <Flex justifyContent='center' px={10} flexWrap='wrap' mx={-2} >
+        {Object.entries(seenGroup).map(([fieldValue, totalCount]) => (
+              <TagPil key={fieldValue} tag={fieldValue} count={totalCount} />
+        ))}
+      </Flex>
+    )
+
+  }
+}
+
 
 class Tags extends React.Component {
   render() {
@@ -36,16 +114,7 @@ class Tags extends React.Component {
           <Helmet title={siteTitle} />
           <div className={styles.hero}>Tags</div>
           <div className="wrapper">
-            <h2>Tags</h2>
-            <ul>
-              {Object.entries(seenGroup).map(([fieldValue, totalCount]) => (
-                <li key={fieldValue}>
-                  <Link to={`/tags/${kebabCase(fieldValue)}/`}>
-                    {fieldValue} ({totalCount})
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <TagsList seenGroup={seenGroup} />
           </div>
         </div>
       </Layout>

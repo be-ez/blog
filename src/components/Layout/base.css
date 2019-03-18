@@ -34,6 +34,31 @@ h6 {
 
 a {
   color: currentColor;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.new-tag:hover{
+  color: rgb(127, 189, 114);
+}
+
+.tag {
+  color: #A0A0A0;
+  text-decoration: none;
+  display: inline-block;
+  padding: .33333rem .5rem;
+  line-height: 1;
+  border-radius: 2px;
+  border: 1px solid #A0A0A0;
+  margin-right: .5em;
+}
+.tag:hover{
+  color: rgb(127, 189, 114);
+  border: 2px solid rgb(127, 189, 114);
+  box-shadow: #A0A0A0
 }
 
 .livephoto {
