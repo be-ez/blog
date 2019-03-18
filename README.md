@@ -28,7 +28,7 @@ Possible to write posts in MDX with either React of Vue
         [ ✅ ] Views
         [ ✅ ] Subviews
         [ ✅ ] Nav
-        [ ❌ ] iOS Live Photos
+        [ ✅ ] iOS Live Photos
         [ ✅ ] Rich Text
             [ ✅ ] Images
             [ ✅ ] Formatting (Bold, Header Pagebreak etc.) 
@@ -51,7 +51,9 @@ Possible to write posts in MDX with either React of Vue
         [ ✅ ] Contentful Dev Site
         [ ❌ ] gh-pages
         [ ❌ ] gitlab pipelines
-    [ ❌ ] Support MDX and/or Vue ⚡️
+    [ ✅ ] Support MDX and/or Vue ⚡️
+        [ ✅ ] via .mdx files
+        [ ❌ ] via contentful Rich Text
     [ ❌ ] Analtyics page🔆
         [❌] Words per week 💯
         [❌] SVG Graph plugin
