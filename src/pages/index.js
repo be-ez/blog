@@ -43,7 +43,7 @@ class RootIndex extends React.Component {
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
-                  <Box key={node.slug} width={1}>
+                  <Box key={node.slug} px={[2,0]} width={1}>
                   {/* hack(alex) */}
                     <ArticlePreview article={node} slug={"📓"}/>
                   </Box>

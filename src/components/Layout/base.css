@@ -82,9 +82,9 @@ and (-webkit-min-device-pixel-ratio: 2)
  
 and (orientation: portrait) {
   .wrapper {
-    width: 100%;
+    width: auto;
     margin: 0 auto;
-    padding: 1vmin;
+
   }
   
  
