@@ -38,13 +38,14 @@ Possible to write posts in MDX with either React of Vue
             [ ✅ ] Generic
             [ ✅ ] Blog
             [ ✅ ] Card
-        [ ❌ ] Mobile
-            [ ❌ ] Breakpoints
+        [ ✅ ] Mobile
+            [ ✅ ] Breakpoints
             [ ✅ ] Flexbox Grid in base layout
-        [ ❌ ] Customize Layouts
-            [ ❌ ] Card
-            [ ❌ ] View
-            [ ❌ ] PhotoGallery
+        [ ✅ ] Customize Layouts in View
+            [ ✅ ] None
+            [ ❌ ] Grid
+            [ ❌ ] Lists
+            [ ✅ ] Masonary
     [ ✅ ] Continuous Deployment
         [ ✅ ] Dokku push
         [ ✅ ] Contentful Change
