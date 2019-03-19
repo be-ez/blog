@@ -29,6 +29,7 @@ function TitleOrLink(title, slug){
 
 export default function ContentfulCard({content, slug}) {
   const inner_content =content.content
+
   return (
       <Box
         width={[1, 1/2]}
@@ -71,7 +72,7 @@ export const cardFragment = graphql`
       }
     }
     image {
-      fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+      fluid(maxHeight: 350,) {
         ...GatsbyContentfulFluid_tracedSVG
       }
     }

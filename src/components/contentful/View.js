@@ -15,7 +15,7 @@ function ViewContent({ title, content, slug }) {
     return (
       <div>
       <h2 className="section-headline">{title}</h2>
-      <Flex flexWrap='wrap' mx={-2}>
+      <Flex  flexWrap='wrap' alignItems="flex-start" mx={-2}>
         {content.map((node ) => {
           if (node.__typename == "ContentfulBlogPost"){
             return (
