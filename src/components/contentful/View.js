@@ -9,19 +9,26 @@ import ContentfulLivePhoto from './LivePhoto'
 import ArticlePreview from '../ArticlePreview'
 
 import styles from './Collapsible.scss'
+import more_styles from './view.css'
+import Masonry from 'react-masonry-css'
 
-function ViewContent({ title, content, slug }) {
+
+function ViewContent({ title, content, slug, breakpointColumnsObj }) {
   if (Array.isArray(content)){
     return (
       <div>
       <h2 className="section-headline">{title}</h2>
-      <Flex  flexWrap='wrap' alignItems="flex-start" mx={-2}>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        
         {content.map((node ) => {
           if (node.__typename == "ContentfulBlogPost"){
             return (
               <Box
                 key={node.slug}
-                width={[1, 1/2]}
+                width={[1]}
                 p={3}
                 Flex
                 >
@@ -46,7 +53,7 @@ function ViewContent({ title, content, slug }) {
             )
           }
         })}
-      </Flex>
+      </Masonry>
       </div>
     )
   }else if (content.__typename == "ContentfulGenericContent"){
@@ -67,11 +74,22 @@ function ViewContent({ title, content, slug }) {
 
 export default ViewContent
 
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 3,
+  700: 2,
+  500: 1
+};
+
+
 export const viewFragment = graphql`
   fragment ViewFragment on ContentfulView {
         title
         slug
         subpages
+        smallViewNumberOfColumns
+        mediumViewNumberOfColumns
+        largeViewNumberOfColumns
         content {
           __typename
           ... on ContentfulCard {

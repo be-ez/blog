@@ -57,6 +57,7 @@
     "gh-pages": "^2.0.1",
     "inquirer": "^6.2.2",
     "prettier": "^1.16.4",
+    "react-masonry-css": "^1.0.12",
     "rimraf": "^2.6.3",
     "yargs-parser": "^13.0.0"
   },

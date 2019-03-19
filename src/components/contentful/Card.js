@@ -32,7 +32,7 @@ export default function ContentfulCard({content, slug}) {
 
   return (
       <Box
-        width={[1, 1/2]}
+        width={[1]}
         height={1}
         py='3'
         Flex
@@ -72,7 +72,7 @@ export const cardFragment = graphql`
       }
     }
     image {
-      fluid(maxHeight: 350,) {
+      fluid {
         ...GatsbyContentfulFluid_tracedSVG
       }
     }

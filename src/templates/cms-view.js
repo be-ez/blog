@@ -13,6 +13,13 @@ class ViewTemplate extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     // const content = get(this.props, 'data.contentfulView.content')
     const views = get(this.props, 'data.allContentfulView.edges')
+
+    const breakpointColumnsObj = {
+      default: view.largeViewNumberOfColumns,
+      1100: view.largeViewNumberOfColumns,
+      700: view.mediumViewNumberOfColumns,
+      500: view.smallViewNumberOfColumns
+    };
     // const subpages = get(this.props, 'data.contentfulView.subpages')
     // Render list nested view
       return (
@@ -32,7 +39,7 @@ class ViewTemplate extends React.Component {
               <div></div>
             )}
             <div className="wrapper">
-              <ViewContent slug={view.slug} title={view.title} content={view.content} />
+              <ViewContent slug={view.slug} title={view.title} breakpointColumnsObj={breakpointColumnsObj} content={view.content} />
             </div>
           </div>
         </Layout>
@@ -59,42 +66,8 @@ export const pageQuery = graphql`
       }
     }
     contentfulView(slug: {eq: $slug}) {
-      title
-      slug
-      subpages
-      heroImage {
-            fluid(maxWidth: 1180, background: "rgb:000000") {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-      }
-      content{
-        __typename
-        ... on ContentfulCard {
-          ... ContentfulCardFragment
-        }
-        ... on ContentfulGenericContent{
-          ... GenericContentFragment
-        }
-        ... on ContentfulLivePhoto{
-          ... ContentfulLivePhotoFragment
-        }
-        ... on ContentfulBlogPost {
-          title
-          slug
-          tags
-          publishDate(formatString: "MMMM Do, YYYY")
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
-      }
+      ...ViewFragment
     }
+    
   }
 `
