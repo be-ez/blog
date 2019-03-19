@@ -2,7 +2,7 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  align-content: stretch;
+  align-content: flex-start;
   justify-content: space-evenly;
   width: auto;
 }

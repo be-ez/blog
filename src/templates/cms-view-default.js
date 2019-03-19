@@ -20,7 +20,7 @@ class ViewDefaultTemplate extends React.Component {
          <Box
             key={content.slug}
             width={[1, 4/5]}
-            p={3}
+            p={[0,3]}
             mx={[0,'auto']}
             >
             <ContentfulContent  content={content} />
