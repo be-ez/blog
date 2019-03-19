@@ -6,66 +6,100 @@ import { Flex, Box } from 'rebass'
 import ContentfulContent from './GenericContent'
 import ContentfulCard from './Card'
 import ContentfulLivePhoto from './LivePhoto'
+import ContentfulPhotoStream from './PhotoStream'
 import ArticlePreview from '../ArticlePreview'
 
 import styles from './Collapsible.scss'
 import more_styles from './view.css'
 import Masonry from 'react-masonry-css'
+import { timeout } from "q";
 
+function mapContent(view) {
+  return  view.content.map((node ) => {
+    if (node.__typename == "ContentfulBlogPost"){
+      return (
+        <Box
+          key={node.slug}
+          width={[1]}
+          p={3}
+          Flex
+          >
+          <ArticlePreview article={node} slug={view.slug} />
+        </Box>
+      )
+    } else if( node.__typename == "ContentfulGenericContent" ){
+      return (
+          <ContentfulContent key={node.slug} slug={view.slug}  content={node} />
+      )
+    } else if (node.__typename == "ContentfulCard"){
+      return (
+      <ContentfulCard slug={view.slug} key={node.slug} content={node} />
+      )
+    } else if (node.__typename == "ContentfulCard"){
+      return (
+      <ContentfulCard slug={view.slug} key={node.slug} content={node} />
+      )
+    } else if (node.__typename == "ContentfulLivePhoto"){
+      return (
+        <ContentfulLivePhoto key={node.id} content={node} />
+      )
+    }  else if (node.__typename == "ContentfulPhotoStream"){
+      return (
+        <ContentfulPhotoStream key={node.id} content={node} />
+      )
+      
+    }
+  })
+}
 
-function ViewContent({ title, content, slug, breakpointColumnsObj }) {
-  if (Array.isArray(content)){
-    return (
-      <div>
-      <h2 className="section-headline">{title}</h2>
+function layoutMasonary(view){
+  const breakpointColumnsObj = {
+    default: view.largeViewNumberOfColumns,
+    1100: view.largeViewNumberOfColumns,
+    700: view.mediumViewNumberOfColumns,
+    500: view.smallViewNumberOfColumns
+  };
+  return (
+    <div>
+      <h2 className="section-headline">{view.title}</h2>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
-        
-        {content.map((node ) => {
-          if (node.__typename == "ContentfulBlogPost"){
-            return (
-              <Box
-                key={node.slug}
-                width={[1]}
-                p={3}
-                Flex
-                >
-                <ArticlePreview article={node} slug={slug} />
-              </Box>
-            )
-          } else if( node.__typename == "ContentfulGenericContent" ){
-            return (
-                <ContentfulContent key={node.slug} slug={slug}  content={node} />
-            )
-          } else if (node.__typename == "ContentfulCard"){
-            return (
-            <ContentfulCard slug={slug} key={node.slug} content={node} />
-            )
-          } else if (node.__typename == "ContentfulCard"){
-            return (
-            <ContentfulCard slug={slug} key={node.slug} content={node} />
-            )
-          } else if (node.__typename == "ContentfulLivePhoto"){
-            return (
-              <ContentfulLivePhoto key={node.id} content={node} />
-            )
-          }
-        })}
+        {mapContent(view)}
       </Masonry>
-      </div>
-    )
-  }else if (content.__typename == "ContentfulGenericContent"){
+    </div>
+  )
+}
+
+function layoutNone(view){
+  return (
+    <div>
+      <h2 className="section-headline">{view.title}</h2>
+        {mapContent(view)}
+    </div>
+  )
+}
+
+function ViewContent({ view }) {
+  if (Array.isArray(view.content)){
+      if (view.layoutType.toLowerCase() == "masonry"){
+        return layoutMasonary(view)
+      } else if (view.layoutType.toLowerCase() == "none"){
+        return layoutNone(view)
+      }
+
+    
+  }else if (view.content.__typename == "ContentfulGenericContent"){
 
     return (
       <Box
-      key={content.slug}
+      key={view.content.slug}
       width={[1, 4/5]}
       p={3}
       mx={[0,'auto']}
       >
-      <ContentfulContent slug={slug}  content={content} />
+      <ContentfulContent slug={view.slug}  content={view.content} />
       </Box>
       )
   }
@@ -74,12 +108,7 @@ function ViewContent({ title, content, slug, breakpointColumnsObj }) {
 
 export default ViewContent
 
-const breakpointColumnsObj = {
-  default: 3,
-  1100: 3,
-  700: 2,
-  500: 1
-};
+
 
 
 export const viewFragment = graphql`
@@ -87,6 +116,7 @@ export const viewFragment = graphql`
         title
         slug
         subpages
+        layoutType
         smallViewNumberOfColumns
         mediumViewNumberOfColumns
         largeViewNumberOfColumns
@@ -103,6 +133,9 @@ export const viewFragment = graphql`
           }
           ... on ContentfulBlogPost {
             ... BlogArticlePreviewFragment
+          }
+          ... on ContentfulPhotoStream {
+            ... ContentfulPhotoStreamFragment
           }
         }
         header {

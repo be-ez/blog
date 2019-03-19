@@ -9,7 +9,6 @@ import ArticlePreview from '../components/ArticlePreview'
 import ContentfulContent from '../components/contentful/GenericContent'
 import styles from '../components/contentful/Collapsible.scss'
 
-import ViewContent from '../components/contentful/View'
 import heroStyles from '../components/Hero/hero.module.css'
 import {
   Flex,

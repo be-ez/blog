@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-
+import {Box} from 'rebass'
 import Layout from '../components/Layout'
-import ViewContent from '../components/contentful/View'
+import ContentfulContent from '../components/contentful/GenericContent'
 
 
 class ViewDefaultTemplate extends React.Component {
@@ -17,7 +17,14 @@ class ViewDefaultTemplate extends React.Component {
         <Layout views={views} location={this.props.location}>
          <Helmet title={siteTitle} />
          <div className="wrapper">
-           <ViewContent key={content.slug}  content={content} />
+         <Box
+            key={content.slug}
+            width={[1, 4/5]}
+            p={3}
+            mx={[0,'auto']}
+            >
+            <ContentfulContent  content={content} />
+          </Box>
          </div>
         </Layout>
       )

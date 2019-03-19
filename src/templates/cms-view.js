@@ -39,7 +39,7 @@ class ViewTemplate extends React.Component {
               <div></div>
             )}
             <div className="wrapper">
-              <ViewContent slug={view.slug} title={view.title} breakpointColumnsObj={breakpointColumnsObj} content={view.content} />
+              <ViewContent view={view}/>
             </div>
           </div>
         </Layout>
