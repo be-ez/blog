@@ -1,4 +1,4 @@
-# Gatsby Contentful
+# [Gatsby Contentful](https://xn--4qe.com "Blog")
 
 ## Goals
     [ 📈 ] Simple CMS workspace to create content 👌
